@@ -18,6 +18,17 @@ function BrickBuilder:create(params)
             return self:createZ(params)
         elseif params.type == BRICK_RANDOM then
             if params.disposition == nil then
+                local brickColors = {
+                    'cyan',
+                    'yellow',
+                    'purple',
+                    'green',
+                    'red',
+                    'blue',
+                    'orange',
+                    'grey'
+                }
+                params.color = brickColors[math.random(1,#brickColors)]
                 return self:createRandom(params)
             else
                 return self:createFromDisposition(params.disposition, params)
@@ -276,7 +287,7 @@ function BrickBuilder:createFromDisposition(disposition, params)
     local brick = Brick({
         x = params.x or DEFAULT_SPAWN_X,
         y = params.y or DEFAULT_SPAWN_Y,
-        color = 'grey',
+        color = params.color or 'grey',
         center = true,
         type = BRICK_RANDOM,
         isGhost = params.isGhost or false,
@@ -288,7 +299,7 @@ function BrickBuilder:createFromDisposition(disposition, params)
             if (not (disposition[i] == nil)) and disposition[i][1] == RANDOM_BRICK_CREATE_TOP then
                 -- first layer
                 brick:connect(Brick({
-                    color = 'grey',
+                    color = params.color or 'grey',
                     isGhost = params.isGhost or false
                 }), 'up')
 
@@ -304,7 +315,7 @@ function BrickBuilder:createFromDisposition(disposition, params)
                     end
                     
                     brick.up:connect(Brick({
-                        color = 'grey',
+                        color = params.color or 'grey',
                         isGhost = params.isGhost or false
                     }), where)
                 end

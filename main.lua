@@ -1,7 +1,5 @@
 require 'src/Dependencies'
 
---//TODO: New game mode
---//TODO: Change random brick color
 function love.load()
     love.graphics.setDefaultFilter("nearest", 'nearest')
     math.randomseed(os.time())

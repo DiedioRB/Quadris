@@ -48,7 +48,8 @@ function PlayState:enter(params)
         self.preview = BrickBuilder:create({
             type = self.fallingBrick.type,
             isGhost = true,
-            disposition = self.fallingBrick.disposition
+            disposition = self.fallingBrick.disposition,
+            color = self.fallingBrick.color
         })
         self:calculatePreview()
     end
@@ -88,10 +89,11 @@ function PlayState:newBrick()
     self.preview = BrickBuilder:create({
         type = self.fallingBrick.type,
         isGhost = true,
-        disposition = self.fallingBrick.disposition
+        disposition = self.fallingBrick.disposition,
+        color = self.fallingBrick.color
     })
     self.next = BrickBuilder:create({
-        type = self.bricks[math.random(1,#self.bricks)]
+        type = self.bricks[math.random(1,#self.bricks)],
     })
     self:calculatePreview()
 end
