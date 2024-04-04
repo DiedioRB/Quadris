@@ -16,8 +16,6 @@ function love.load()
     love.graphics.setFont(gFonts['small'])
 
     gTextures = {
-        ['skin'] = love.graphics.newImage('graphics/brick_skin.png'),
-
         ['background'] = love.graphics.newImage('graphics/background_white.png'),
     }
 
